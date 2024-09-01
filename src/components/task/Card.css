@@ -1,0 +1,10 @@
+.card {
+    display: flex;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.card__items--center {
+    justify-content: center;
+}

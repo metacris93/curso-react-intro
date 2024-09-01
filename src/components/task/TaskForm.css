@@ -1,0 +1,19 @@
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /* margin-top: 20px; */
+}
+.form__column {
+    flex-direction: column;
+}
+.text__left {
+    text-align: left;
+}
+.form__item--left {
+    align-self: flex-start;
+}
+.form--gap-1 {
+    gap: 0.5rem;
+}

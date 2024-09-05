@@ -4,13 +4,10 @@ import { TaskSearch } from "./TaskSearch";
 import { TaskCounter } from "./TaskCounter";
 import { TaskHeader } from "./TaskHeader";
 import React, { useState } from 'react';
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 function TaskPanel(props) {
-    const [tasks, setTasks] = useState(() => {
-        const tasksFromStorage = window.localStorage.getItem('tasks');
-        if (tasksFromStorage) return JSON.parse(tasksFromStorage);
-        return [];
-    });
+    const [tasks, setTasks] = useLocalStorage("tasks", []);
     const [searchValue, setSearchValue] = useState("");
     const completedTasks = tasks.filter(task => !!task.completed).length;
     const totalTasks = tasks.length;

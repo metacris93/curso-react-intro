@@ -1,10 +1,10 @@
-import { TaskItem } from "./TaskItem";
-import { TaskList } from "./TaskList";
-import { TaskSearch } from "./TaskSearch";
-import { TaskCounter } from "./TaskCounter";
-import { TaskHeader } from "./TaskHeader";
+import { TaskItem } from "../TaskItem";
+import { TaskList } from "../TaskList";
+import { TaskSearch } from "../TaskSearch";
+import { TaskCounter } from "../TaskCounter";
+import { TaskHeader } from "../TaskHeader";
 import React, { useState } from 'react';
-import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { useLocalStorage } from "../../../hooks/useLocalStorage";
 
 function TaskPanel(props) {
     const [tasks, setTasks] = useLocalStorage("tasks", []);

@@ -1,5 +1,5 @@
-import "./Card.css"
-import { ReactComponent as DeleteSvg } from "./delete.svg";
+import "../../../shared/styles/Card.css"
+import { ReactComponent as DeleteSvg } from "../../../shared/assets/delete.svg";
 
 function DeleteTask() {
     return (

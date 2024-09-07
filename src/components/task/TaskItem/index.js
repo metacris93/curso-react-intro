@@ -1,8 +1,8 @@
-import "./Card.css"
-import "./Util.css"
+import "../../../shared/styles/Card.css"
+import "../../../shared/styles/Util.css"
 import "./TaskItem.css"
-import { DeleteTask } from "./DeleteTask";
-import { TaskState } from "./TaskState";
+import { DeleteTask } from "../DeleteTask";
+import { TaskState } from "../TaskState";
 function TaskItem({ id, text, completed, onCompleteTask }) {
     return (
         <li className="my-1">

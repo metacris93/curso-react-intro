@@ -4,10 +4,15 @@ import { TaskSearch } from "../TaskSearch";
 import { TaskCounter } from "../TaskCounter";
 import { TaskHeader } from "../TaskHeader";
 import React, { useState } from 'react';
-import { useLocalStorage } from "../../../hooks/useLocalStorage";
+// import { useLocalStorage } from "../../../hooks/useLocalStorage";
 
-function TaskPanel(props) {
-    const [tasks, setTasks] = useLocalStorage("tasks", []);
+function TaskPanel({
+    tasks,
+    setTasks,
+    loading,
+    error
+}) {
+    // const [tasks, setTasks] = useLocalStorage("tasks", []);
     const [searchValue, setSearchValue] = useState("");
     const completedTasks = tasks.filter(task => !!task.completed).length;
     const totalTasks = tasks.length;
@@ -30,6 +35,10 @@ function TaskPanel(props) {
                 setSearchValue={setSearchValue}
             />
             <TaskList>
+                {loading && <p>Loading tasks...</p>}
+                {error && <p>There was an error loading your tasks</p>}
+                {(!loading && searchedTasks.length === 0) && <p>Create a task</p>}
+
                 {searchedTasks.map(todo => (
                     <TaskItem
                         key={todo.text}

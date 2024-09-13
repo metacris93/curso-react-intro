@@ -3,48 +3,40 @@ import { TaskList } from "../TaskList";
 import { TaskSearch } from "../TaskSearch";
 import { TaskCounter } from "../TaskCounter";
 import { TaskHeader } from "../TaskHeader";
-import React, { useState } from 'react';
-// import { useLocalStorage } from "../../../hooks/useLocalStorage";
+import React from 'react';
+import { TasksLoading } from "../TasksLoading";
+import { TasksError } from "../TasksError";
+import { EmptyTasks } from "../EmptyTasks";
+import { TaskContext } from "../TaskContext";
 
-function TaskPanel({
-    tasks,
-    setTasks,
-    loading,
-    error
-}) {
-    // const [tasks, setTasks] = useLocalStorage("tasks", []);
-    const [searchValue, setSearchValue] = useState("");
-    const completedTasks = tasks.filter(task => !!task.completed).length;
-    const totalTasks = tasks.length;
-    const searchedTasks = tasks.filter(task => task.text.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()));
-
-    const onCompleteTask = (id) => {
-        const index = tasks.findIndex(task => task.id === id);
-        if (index === -1) return;
-        const newTasks = [...tasks];
-        newTasks[index].completed = true;
-        setTasks(newTasks);
-    }
-
+function TaskPanel() {
+    const {
+        loading,
+        error,
+        searchedTasks,
+        onCompleteTask
+    } = React.useContext(TaskContext);
     return (
         <section>
             <TaskHeader />
-            <TaskCounter completed={completedTasks} total={totalTasks} />
-            <TaskSearch
-                searchValue={searchValue}
-                setSearchValue={setSearchValue}
-            />
+            <TaskCounter />
+            <TaskSearch />
             <TaskList>
-                {loading && <p>Loading tasks...</p>}
-                {error && <p>There was an error loading your tasks</p>}
-                {(!loading && searchedTasks.length === 0) && <p>Create a task</p>}
-
-                {searchedTasks.map(todo => (
+                {loading && (
+                    <>
+                        <TasksLoading />
+                        <TasksLoading />
+                        <TasksLoading />
+                    </>
+                )}
+                {error && <TasksError />}
+                {(!loading && searchedTasks.length === 0) && <EmptyTasks />}
+                {searchedTasks.map(task => (
                     <TaskItem
-                        key={todo.text}
-                        id={todo.id}
-                        text={todo.text}
-                        completed={todo.completed}
+                        key={task.text}
+                        id={task.id}
+                        text={task.text}
+                        completed={task.completed}
                         onCompleteTask={onCompleteTask}
                     />
                 ))}

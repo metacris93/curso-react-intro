@@ -1,23 +1,14 @@
 import { CreateTask } from "./components/task/CreateTask";
+import { TaskProvider } from "./components/task/TaskContext";
 import { TaskPanel } from "./components/task/TaskPanel";
-import { useLocalStorage } from "./hooks/useLocalStorage";
 
 function App() {
-    const {
-        item: tasks,
-        saveItem: setTasks,
-        loading,
-        error,
-    } = useLocalStorage("tasks", []);
     return (
         <>
             <CreateTask />
-            <TaskPanel
-                tasks={tasks}
-                setTasks={setTasks}
-                loading={loading}
-                error={error}
-            />
+            <TaskProvider>
+                <TaskPanel />
+            </TaskProvider>
         </>
     );
 }

@@ -1,4 +1,8 @@
-function TaskSearch({ searchValue, setSearchValue }) {
+import React from 'react';
+import { TaskContext } from '../TaskContext';
+
+function TaskSearch() {
+    const { searchValue, setSearchValue } = React.useContext(TaskContext);
     return (
         <input
             type="search"

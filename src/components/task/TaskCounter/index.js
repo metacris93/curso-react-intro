@@ -1,8 +1,12 @@
+import { TaskContext } from "../TaskContext";
 import "./TaskCounter.css"
-function TaskCounter({ total, completed }) {
+import React from 'react';
+
+function TaskCounter() {
+    const { totalTasks, completedTasks } = React.useContext(TaskContext);
     return (
         <h3>
-            Has completado {completed} de {total}
+            Has completado {completedTasks} de {totalTasks}
         </h3>
     );
 }

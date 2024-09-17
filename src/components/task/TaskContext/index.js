@@ -11,6 +11,7 @@ function TaskProvider({ children }) {
         error,
     } = useLocalStorage("tasks", []);
     const [searchValue, setSearchValue] = useState("");
+    const [openModal, setOpenModal] = useState(true);
     const completedTasks = tasks.filter(task => !!task.completed).length;
     const totalTasks = tasks.length;
     const searchedTasks = tasks.filter(task => task.text.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()));
@@ -29,6 +30,13 @@ function TaskProvider({ children }) {
         newTasks.splice(index, 1);
         setTasks(newTasks);
     };
+    const addTask = (taskName) => {
+        setTasks([...tasks, {
+            id: tasks.length + 1,
+            text: taskName,
+            completed: false,
+        }]);
+    };
 
     return (
         <TaskContext.Provider
@@ -41,7 +49,10 @@ function TaskProvider({ children }) {
                 searchedTasks,
                 completedTasks,
                 onCompleteTask,
-                deleteTask
+                deleteTask,
+                addTask,
+                openModal,
+                setOpenModal,
             }}
         >
             {children}

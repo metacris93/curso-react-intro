@@ -8,13 +8,16 @@ import { TasksLoading } from "../TasksLoading";
 import { TasksError } from "../TasksError";
 import { EmptyTasks } from "../EmptyTasks";
 import { TaskContext } from "../TaskContext";
+import { Modal } from "../../modal";
 
 function TaskPanel() {
     const {
         loading,
         error,
         searchedTasks,
-        onCompleteTask
+        onCompleteTask,
+        openModal,
+        setOpenModal,
     } = React.useContext(TaskContext);
     return (
         <section>
@@ -41,6 +44,13 @@ function TaskPanel() {
                     />
                 ))}
             </TaskList>
+            {
+                openModal && (
+                    <Modal>
+                        La funcionalidad de agregar TODO
+                    </Modal>
+                )
+            }
         </section>
     );
 }

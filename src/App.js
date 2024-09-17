@@ -5,8 +5,8 @@ import { TaskPanel } from "./components/task/TaskPanel";
 function App() {
     return (
         <>
-            <CreateTask />
             <TaskProvider>
+                <CreateTask />
                 <TaskPanel />
             </TaskProvider>
         </>

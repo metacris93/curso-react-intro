@@ -10,6 +10,7 @@ function TaskForm() {
     const onSubmit = (event) => {
         event.preventDefault();
         addTask(taskName);
+        setTaskName("");
     };
     return (
         <form onSubmit={onSubmit}

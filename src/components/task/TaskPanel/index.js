@@ -18,6 +18,7 @@ function TaskPanel() {
         onCompleteTask,
         openModal,
         setOpenModal,
+        onDeleteTask,
     } = React.useContext(TaskContext);
     return (
         <section>
@@ -41,6 +42,7 @@ function TaskPanel() {
                         text={task.text}
                         completed={task.completed}
                         onCompleteTask={onCompleteTask}
+                        onDeleteTask={onDeleteTask}
                     />
                 ))}
             </TaskList>

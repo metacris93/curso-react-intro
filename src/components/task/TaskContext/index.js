@@ -23,8 +23,8 @@ function TaskProvider({ children }) {
         newTasks[index].completed = true;
         setTasks(newTasks);
     }
-    const deleteTask = (task) => {
-        const index = tasks.findIndex(t => t.id === task.id);
+    const onDeleteTask = (id) => {
+        const index = tasks.findIndex(t => t.id === id);
         if (index === -1) return;
         const newTasks = [...tasks];
         newTasks.splice(index, 1);
@@ -36,6 +36,7 @@ function TaskProvider({ children }) {
             text: taskName,
             completed: false,
         }]);
+        setSearchValue("");
     };
 
     return (
@@ -49,7 +50,7 @@ function TaskProvider({ children }) {
                 searchedTasks,
                 completedTasks,
                 onCompleteTask,
-                deleteTask,
+                onDeleteTask,
                 addTask,
                 openModal,
                 setOpenModal,

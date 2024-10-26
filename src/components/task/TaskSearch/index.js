@@ -6,6 +6,7 @@ function TaskSearch() {
     return (
         <input
             type="search"
+            className="input"
             value={searchValue}
             placeholder="Search..."
             onChange={(e) => setSearchValue(e.target.value)}

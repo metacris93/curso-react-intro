@@ -18,12 +18,12 @@ function TaskForm() {
             <label className="form__item--left">Task Name</label>
             <input
                 type="text"
-                className="form__item--left"
+                className="form__item--left input"
                 placeholder="Type the new task..."
                 value={taskName}
                 onChange={(event) => setTaskName(event.target.value)}
             />
-            <button type="submit" className="form__item--left">Create Task</button>
+            <button type="submit" className="form__item--left btn btn-primary">Create Task</button>
         </form>
     );
 }
